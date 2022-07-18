@@ -12,6 +12,20 @@ pipeline {
                 echo 'Testing..'
             }
         }
+        stage('DependencyCheck') {
+            steps {
+                dependencyCheck additionalArguments: ''' 
+                    -o "./" 
+                    -s "./"
+                    -f "ALL" 
+                    --prettyPrint''', odcInstallation: 'OWASP-DC'
+
+                dependencyCheckPublisher pattern: 'dependency-check-report.xml'
+            
+            }
+        
+        
+        }
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
