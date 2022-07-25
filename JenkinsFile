@@ -31,7 +31,7 @@ pipeline {
         }
         stage ('Dependency Tracker') {
             steps {
-                dependencyTrackPublisher artifact: 'target/bom.xml', projectId: '4d6d07f2-eb3d-4460-bccb-a34b5fea019b', synchronous: true
+                dependencyTrackPublisher artifact: 'target/ependency-check-report.xml', projectId: '4d6d07f2-eb3d-4460-bccb-a34b5fea019b', synchronous: true
             }
         }
         stage ('Scan and Build Jar File') {
